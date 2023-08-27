@@ -1,27 +1,3 @@
-<!--
-MIT License
-
-Copyright (c) 2021-2022 FoxxoSnoot
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -385,32 +361,51 @@ SOFTWARE.
         @yield('content')
     </div>
 
-    <footer class="container-custom text-center mb-5 mt-5" style="padding-top:0;">
-        <div class="mb-2" style="font-size:17px;">
-            <a href="{{ route('info.index', 'terms') }}" class="text-muted mr-3" style="text-decoration:none;">TERMS</a>
-            <a href="{{ route('info.index', 'privacy') }}" class="text-muted mr-3" style="text-decoration:none;">PRIVACY</a>
-            <a href="{{ route('info.index', 'team') }}" class="text-muted" style="text-decoration:none;">TEAM</a>
-        </div>
-
-        <div><strong>Copyright &copy; {{ config('site.name') }} {{ date('Y') }}</strong></div>
-        <div class="text-muted" style="font-size:13px;"><strong>Powered by <a href="https://github.com/FoxxoSnoot/laravel-roblox-clone" target="_blank">Laravel Roblox Clone</a></strong></div>
-
-        @if (config('site.socials.discord') || config('site.socials.twitter'))
-            <div class="mt-2">
-                @if (config('site.socials.discord'))
-                    <a href="{{ config('site.socials.discord') }}" style="color:#7289da;font-size:25px;text-decoration:none;" title="Join our Discord server!" target="_blank" data-toggle="tooltip">
-                        <i class="fab fa-discord"></i>
-                    </a>
-                @endif
-
-                @if (config('site.socials.twitter'))
-                    <a href="{{ config('site.socials.twitter') }}" style="color:#00acee;font-size:26px;text-decoration:none;" title="Follow us on Twitter!" target="_blank" data-toggle="tooltip">
-                        <i class="fab fa-twitter-square"></i>
-                    </a>
-                @endif
+ <nav class="footer">
+        <main class="container">
+          <img src="/assets/images/bp-primary1.png" class="d-inline-block mb-3" width="256">
+          <div class="d-flex justify-content-center gap-4 text-2xl mb-4">
+            <a target="_blank" href="{{ env('DISCORD') }}" class="text-light"><i class="fab fa-discord"></i></a>
+            <a target="_blank" href="{{ env('YOUTUBE') }}" class="text-light"><i class="fab fa-youtube"></i></a>
+            <a target="_blank" href="{{ env('TWITTER') }}" class="text-light"><i class="fab fa-twitter"></i></a>
+            <a target="_blank" href="{{ env('TIKTOK') }}" class="text-light"><i class="fab fa-tiktok"></i></a>
+            <a target="_blank" href="{{ env('TWITCH') }}" class="text-light"><i class="fab fa-twitch"></i></a>
+            <a target="_blank" href="{{ env('INSTAGRAM') }}" class="text-light"><i class="fab fa-instagram"></i></a>
+          </div>
+          <main class="divider divider-centered mb-4">Other Links</main>
+          <div class="row gy-4 mb-5">
+            <div class="col-md-4 col-4 text-center">
+              <a href="{{ env('APP_URL') }}" class="footer-link">Home</a>
             </div>
-        @endif
-    </footer>
+            <div class="col-md-4 col-4 text-center">
+              <a href="#" class="footer-link">Help Desk</a>
+            </div>
+            <div class="col-md-4 col-4 text-center">
+              <a href="{{ env('WIKI_URL') }}" class="footer-link">Our Wiki</a>
+            </div>
+            <div class="col-md-4 col-4 text-center">
+              <a href="#" class="footer-link">Work With Us</a>
+            </div>
+            <div class="col-md-4 col-4 text-center">
+              <a href="{{ env('BLOG_URL') }}/" class="footer-link">Our Blog</a>
+            </div>
+            <div class="col-md-4 col-4 text-center">
+              <a href="{{ env('APP_URL') }}/bugs/send" class="footer-link">Report A Bug</a>
+            </div>
+          </div>
+          <div class="mb-2">
+            <a href="{{ env('APP_URL') }}/about/terms-and-conditions" class="text-light text-decoration-none fw-semibold">Terms and Conditions</a>
+            <span class="mx-2 text-muted">•</span>
+            <a href="{{ env('APP_URL') }}/about/privacy-policy" class="text-light text-decoration-none fw-semibold">Privacy Policy</a>
+            <span class="mx-2 text-muted">•</span>
+            <a href="{{ env('APP_URL') }}/about/contact-us" class="text-light text-decoration-none fw-semibold">Contact Us</a>
+          </div>
+          <div class="text-muted text-sm">
+            © 2023 <span class="fw-semibold">{{ env('APP_NAME') }}, Inc.</span> All
+            rights reserved.
+          </div>
+        </main>
+      </nav>
 
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
