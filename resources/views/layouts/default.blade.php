@@ -29,6 +29,14 @@
 </head>
 <body>
     @guest
+  <style>
+  .dropdown-link {
+    cursor: pointer;
+  }
+  select option {
+    background: rgba(0, 0, 0, 0.9);
+  }
+  </style>
     <nav class="navbar">
         <ul class="navbar-nav me-auto flex-grow-1">
             <li class="nav-item d-flex d-lg-none pe-2">
