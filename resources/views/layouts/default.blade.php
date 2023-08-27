@@ -182,27 +182,18 @@
             © 2023 <span class="fw-semibold">{{ env('APP_NAME') }}, Inc.</span> All
             rights reserved.
           </div>
-        </main>
-      </nav>
-    <script>
-        var _token;
+        </nav>
+      </main>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="/assets/js/jquery.timeago.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" integrity="sha512-lteuRD+aUENrZPTXWFRPTBcDDxIGWe5uu0apPEn+3ZKYDwDaEErIK9rvR0QzUGmUQ55KFE2RqGTVoZsKctGMVw==" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
 
-        $(() => {
-            _token = $('meta[name="csrf-token"]').attr('content');
-
-            $('[data-toggle="tooltip"]').tooltip();
-
-            $('#sidebarToggler').click(function() {
-                const enabled = !$('.sidebar').hasClass('show');
-
-                if (enabled)
-                    $('.sidebar').addClass('show');
-                else
-                    $('.sidebar').removeClass('show');
-            });
-        });
-    </script>
-    <script src="{{ asset('js/search.js') }}"></script>
     @yield('js')
 </body>
 </html>
