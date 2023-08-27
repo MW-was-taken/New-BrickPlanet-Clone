@@ -1,29 +1,5 @@
-<!--
-MIT License
-
-Copyright (c) 2021-2022 FoxxoSnoot
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
--->
-
 @extends('layouts.default', [
-    'title' => 'Welcome'
+    'title' => ''
 ])
 
 @section('css')
@@ -89,27 +65,31 @@ SOFTWARE.
 @endsection
 
 @section('content')
+    <main class="wrapper">
+              <script>
+window.onload = function() {
+  var vid = document.getElementById("home-video");
+  vid.playbackRate = 0.75;
+};
+</script>
+<div class="position-relative text-center">
+  <div class="position-absolute top-0" style="height:100%;width:100%;min-height:900px;opacity:0.75;background-color:#000000;z-index:2;">&nbsp;</div>
+  <div style="margin:0 auto;display:block">
+  <video id="home-video" autoplay="autoplay" loop="loop" muted defaultMuted playsinline style="height:900px;width:100%;object-fit: cover;" style="z-index:1;">
+    <source src="/cdn/videos/MontageV2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
+  </div>
+  <div class="position-absolute top-0" style="z-index:3;width:100%;">
+    <div style="padding-top:15%" class="d-none d-xl-block"></div>
+    <div style="padding-top:30%" class="d-block d-xl-none"></div>
+    <div class="row justify-content-center" style="margin:0">
+      <div class="col-md-6 col-12">
+        <div class="text-6xl fw-bold mb-4 text-white" style="text-shadow: 2px 2px 6px #111;">Build And Play Games.</div>
+        <div class="text-2xl faded mb-4 fw-semibold" style="text-shadow: 2px 2px 6px #111;">Start Your Journey Today!</div>
+        <a href="{{ env('APP_LINK') }}/register" class="btn btn-lg btn-primary fw-semibold px-3">Play Now</a>
+      </div>
     </div>
-    <header class="landing-header">
-        <div class="header-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 align-self-center text-center-sm">
-                        <h1>The place to create.</h1>
-                        <p>{{ config('site.name') }} is an online 3D gaming platform where users can enable their creativity. Customize your character, create your own clothing, participate in a virtual economy, create groups, chat with others, and much more.</p>
-                        <div class="buttons">
-                            <a href="{{ route('auth.register.index') }}" class="btn btn-success"><i class="fas fa-user-plus mr-1"></i> Create Account</a>
-                            <div class="mb-2 show-sm-only"></div>
-                            <a href="{{ route('auth.login.index') }}" class="btn btn-warning"><i class="fas fa-key mr-1"></i> Existing User</a>
-                        </div>
-                        <div class="mt-5"><strong>Copyright &copy; {{ config('site.name') }} {{ date('Y') }}</strong></div>
-                        <div class="text-muted" style="font-size:13px;"><strong>Powered by <a href="https://github.com/FoxxoSnoot/laravel-roblox-clone" target="_blank">Laravel Roblox Clone</a></strong></div>
-                    </div>
-                    <div class="col-md-4 hide-sm">
-                        <img src="{{ config('site.icon') }}">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+  </div>
+</div>
 @endsection
