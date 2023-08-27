@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ isset($title) ? "{$title} | " . config('site.name') : config('site.name') }}</title>
-
+    <title>@if(request()->is('/')) {{ config('site.name') }} @else {{ $title }} | {{ config('site.name') }} @endif </title>
     <!-- Meta -->
     <link rel="shortcut icon" href="{{ config('site.icon') }}">
     <meta name="author" content="{{ config('site.name') }}">
