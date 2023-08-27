@@ -134,6 +134,7 @@
         </li>
               </ul>
     </nav>
+<body>
 @endif
     @endguest
         @yield('content')
