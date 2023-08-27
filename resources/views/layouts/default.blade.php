@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@if(request()->is('/')) {{ config('site.name') }} @else {{ $title }} | {{ config('site.name') }} @endif </title>
-    <!-- Meta -->
-    <link rel="shortcut icon" href="{{ config('site.icon') }}">
-    <meta name="author" content="{{ config('site.name') }}">
-    <meta name="description" content="Explore {{ config('site.name') }}: A free online social hangout.">
-    <meta name="keywords" content="{{ strtolower(config('site.name')) }}, {{ strtolower(str_replace(' ', '', config('site.name'))) }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Build and play online multiplayer games for free. Join a growing gaming community today!">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <meta property="og:site_name" content="{{ env('APP_LINK') }}">
+    <meta property="og:description" content="Build and play online multiplayer games for free. Join a growing gaming community today!">
+    <meta property="og:url" content="{{ secure_url(request()->getRequestUri()) }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('meta')
     <meta property="og:type" content="website">
