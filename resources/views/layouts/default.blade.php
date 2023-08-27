@@ -20,9 +20,9 @@
     <meta property="og:image" content="{{ !isset($image) ? config('site.icon') : $image }}">
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.1.1/css/pro.min.css">
     @yield('fonts')
-    <link rel="stylesheet" href="{{ asset('assets/sytlesheet/normalize.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/sytlesheet/base.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/sytlesheet/brickplanet.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/sytlesheets/normalize.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/sytlesheets/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/sytlesheets/brickplanet.css') }}">
     @yield('css')
 </head>
 <body>
