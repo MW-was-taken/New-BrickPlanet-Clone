@@ -9,5 +9,7 @@ make a laravel project, upload, php artisan migrate, composer update, composer i
 # Note
 please star this and follow my profile, i am making a custom source 2023 BP but you skids are impatient so use this while waiting - Hurricane
 
+i also believe lrc has a backdoor someewhere idk but yeah remove it dont be a skid
+
 # Live site
 i mayyyy have this hosted live for people to play (no guarantees since i dont want to pay lmao)
