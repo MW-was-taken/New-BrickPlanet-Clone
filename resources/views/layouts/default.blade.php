@@ -27,8 +27,6 @@
     <link rel="stylesheet" href="{{ asset('assets/stylesheets/brickplanet.css') }}">
     @yield('css')
 </head>
-<body>
-    @guest
   <style>
   .dropdown-link {
     cursor: pointer;
@@ -64,12 +62,127 @@
                 </form>
             </li>
         </ul>
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item gap-2">
-                <a href="{{ env('APP_LINK') }}/login" class="nav-link btn btn-success fw-semibold text-uppercase px-3 text-sm flex-shrink">Log In</a>
-                <a href="{{ env('APP_LINK') }}/register" class="nav-link btn btn-primary fw-semibold text-uppercase px-3 text-sm flex-shrink">Play Now</a>
+<ul class="navbar-nav ms-auto">
+    @guest
+    <li class="nav-item gap-2">
+        <a href="{{ env('APP_LINK') }}/login" class="nav-link btn btn-success fw-semibold text-uppercase px-3 text-sm flex-shrink">Log In</a>
+        <a href="{{ env('APP_LINK') }}/register" class="nav-link btn btn-primary fw-semibold text-uppercase px-3 text-sm flex-shrink">Play Now</a>
+    </li>
+    @else
+    <li class="nav-item d-none d-md-flex">
+        <a href="{{ env('APP_LINK') }}/creations/1" class="nav-link btn btn-muted text-sm me-2 fw-semibold" style="height:36px;line-height:36px">
+            <i class="fas fa-plus me-1 lh-1"></i> Create</a>
+    </li>
+    <li class="nav-item d-none d-md-flex">
+        <a href="{{ env('APP_LINK') }}/messages" class="nav-link">
+            <i class="far fa-envelope me-2 text-xl lh-1"></i>
+        </a>
+    </li>
+    <li class="nav-item dropdown d-none d-md-flex" style="max-width:500px">
+        <a type="button" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link">
+            <i class="far fa-bell me-2 text-xl lh-1"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" data-bs-popper="static" style="width:330px">
+            <div class="d-flex justify-content-between px-3 align-items-center">
+                <div class="text-xl fw-semibold py-2">Notifications</div>
+                <form action="{{ env('APP_LINK') }}/notifications/mark-all-as-read" method="post">
+                    <input type="hidden" name="_token" value="QZbz9mRAbW5cL9vPyirA7M74DIfefJhG7QlXErXs">
+                    <button type="submit" class="btn btn-success btn-sm text-uppercase fw-semibold">
+                        MARK AS READ
+                    </button>
+                </form>
+            </div>
+            <div class="divider">All Notifications</div>
+            <li class="dropdown-item d-flex align-items-center gap-4">
+                <a href="{{ env('APP_LINK') }}/notifications/all" class="dropdown-link d-flex align-items-center gap-4">
+                    <div class="position-relative">
+                        <span class="notification notification-muted rounded-circle" style="height: 50px; width: 50px"><i class="fas fa-arrow-right-long-to-line"></i></span>
+                        <span class="position-absolute notification notification-primary rounded-circle"><i class="fas fa-bell"></i></span>
+                    </div>
+                    <div>
+                        <div class="mb-1">View All Notifications</div>
+                        <div class="text-muted text-xs">
+                            0 total notifications
+                        </div>
+                    </div>
+                </a>
             </li>
         </ul>
+    </li>
+    <li class="nav-item d-none d-lg-flex">
+        <a href="{{ env('APP_LINK') }}/money" class="nav-link text-credits" title="{{ number_format(Auth::user()->currency) }} Credits">
+            <i class="fas fa-money-bill-1-wave me-2 text-lg lh-1"></i>{{ number_format(Auth::user()->currency) }}</a>
+    </li>
+    <li class="nav-item d-none d-lg-flex">
+        <a href="{{ env('APP_LINK') }}/money" class="nav-link text-warning" title="{{ number_format(Auth::user()->currency) }} Bits">
+            <i class="fas fa-coins me-2 text-lg lh-1"></i>{{ number_format(Auth::user()->currency) }}</a>
+    </li>
+    <li class="nav-item dropdown">
+        <a type="button" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="d-flex align-items-center gap-2 nav-link" id="navbarDropdown">
+            <img src="/cdn/avatars/mOPkzDT20d8g7wMn.png" class="rounded-circle headshot" height="42" width="42">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" data-bs-popper="static">
+            <div class="dropdown-header d-flex align-items-center gap-2 mb-2">
+                <img src="/cdn/avatars/mOPkzDT20d8g7wMn.png" class="rounded-circle headshot" width="42">
+                <div>
+                    <div class="">{{ Auth::user()->username }}</div>
+                    <div class="text-muted text-xs">Level 1</div>
+                </div>
+            </div>
+            <div class="d-block d-md-none text-center">
+            </div>
+            <li class="dropdown-item">
+                <a href="{{ route('users.profile', Auth::user()->username) }}" class="dropdown-link"><i class="far fa-user dropdown-icon"></i> View Profile</a>
+            </li>
+            <li class="dropdown-item">
+                <a href="{{ env('APP_LINK') }}/account/avatar/edit" class="dropdown-link"><i class="far fa-edit dropdown-icon"></i> Edit Avatar</a>
+            </li>
+            <div class="d-block d-lg-none">
+                <div class="divider">Recent</div>
+                <li class="dropdown-item">
+                    <a href="{{ env('APP_LINK') }}/messages" class="dropdown-link">
+                        <i class="far fa-envelope me-2 dropdown-icon position-relative">
+                        </i> Messages
+                    </a>
+                </li>
+                <li class="dropdown-item">
+                    <a href="{{ env('APP_LINK') }}/notifications/all" class="dropdown-link">
+                        <i class="far fa-bell me-2 dropdown-icon position-relative">
+                        </i> Notifications
+                    </a>
+                </li>
+                <div class="divider">Money</div>
+                <li class="dropdown-item">
+                    <a href="{{ env('APP_LINK') }}/money/wallet/1000027792" class="dropdown-link text-primary" title="0.00 Credits"><i class="fas fa-money-bill-1-wave text-primary dropdown-icon"></i>
+                        0.00 Credits</a>
+                </li>
+                <li class="dropdown-item">
+                    <a href="{{ env('APP_LINK') }}/money/wallet/1000027793" class="dropdown-link text-warning"><i class="fas fa-coins text-warning dropdown-icon"></i> 250
+                        Bits</a>
+                </li>
+            </div>
+            <div class="divider">Advanced</div>
+            <li class="dropdown-item">
+                <a href="{{ env('APP_LINK') }}/account/settings" class="dropdown-link"><i class="far fa-cog dropdown-icon"></i> Settings</a>
+            </li>
+            <li class="dropdown-item">
+                <a href="{{ env('APP_LINK') }}/bugs/send" class="dropdown-link">
+                    <i class="fas fa-share dropdown-icon"></i>
+                    &nbsp;Report Bug
+                </a>
+            </li>
+            <div class="divider">Actions</div>
+            <li class="dropdown-item">
+                <a href="{{ env('APP_LINK') }}/logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-link text-danger"><i class="far fa-sign-out-alt dropdown-icon text-danger"></i>
+                    Logout</a>
+                <form id="logout-form" action="{{ env('APP_LINK') }}/logout" method="POST" style="display: none;">
+                    <input type="hidden" name="_token" value="QZbz9mRAbW5cL9vPyirA7M74DIfefJhG7QlXErXs">
+                </form>
+            </li>
+        </ul>
+    </li>
+    @endguest
+</ul>
     </nav>
 @if (!request()->is('/'))
 <style>
@@ -80,10 +193,11 @@
       }
       </style>
 <nav class="sidebar " style="overflow-y:auto">
+@guest
       <ul class="sidebar-nav">
         <main class="divider">Browse</main>
         <li class="sidebar-item">
-          <a href="{{ env('APP_LINK') }}/login" class="sidebar-link @if (request()->is('login')) sidebar-link-active @endif">
+          <a href="{{ env('APP_LINK') }}/login" class="sidebar-link @if (request()->is('login', 'dashboard')) sidebar-link-active @endif">
             <i class="fas fa-house-chimney sidebar-icon text-xl"></i>
             Home
           </a>
@@ -133,10 +247,108 @@
           </a>
         </li>
               </ul>
+@else
+<ul class="sidebar-nav">
+        <main class="divider">Browse</main>
+        <li class="sidebar-item">
+          <a href="{{ env('APP_LINK') }}/home" class="sidebar-link sidebar-link-active">
+            <i class="fas fa-house-chimney sidebar-icon text-xl"></i>
+            Home
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="{{ env('APP_LINK') }}/games" class="sidebar-link ">
+            <i class="fas fa-gamepad-alt sidebar-icon text-xl"></i>
+            Games
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="{{ env('APP_LINK') }}/shop" class="sidebar-link ">
+            <i class="fas fa-shopping-basket sidebar-icon text-xl"></i>
+            Shop
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="{{ env('APP_LINK') }}/forum" class="sidebar-link ">
+            <i class="fas fa-messages sidebar-icon text-xl"></i>
+            Forum
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="{{ env('APP_LINK') }}/upgrade" class="sidebar-link text-warning ">
+            <i class="fas fa-crown sidebar-icon text-warning text-xl"></i>
+            Upgrade
+          </a>
+        </li>
+                <main class="divider">Account</main>
+                <li class="sidebar-item">
+          <a href="{{ env('APP_LINK') }}/friends/pending" class="sidebar-link ">
+            <i class="far fa-user-friends sidebar-icon text-xl position-relative">
+                              <span class="notification-count" style="font-size:8px;right:0px;">1</span>
+                          </i>
+            Friend Requests
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="{{ env('APP_LINK') }}/account/my-items" class="sidebar-link ">
+            <i class="far fa-pen-ruler sidebar-icon text-xl"></i>
+            My Backpack
+          </a>
+        </li>
+                <li class="sidebar-item">
+          <a href="{{ env('APP_LINK') }}/trades" class="sidebar-link ">
+            <i class="far fa-handshake sidebar-icon text-xl position-relative">
+                          </i>
+            My Trades
+          </a>
+        </li>
+                <main class="divider">Discover</main>
+        <li class="sidebar-item">
+          <a href="{{ env('APP_LINK') }}/players" class="sidebar-link ">
+            <i class="fas fa-users sidebar-icon text-xl"></i>
+            Players
+          </a>
+        </li>
+        
+        <li class="sidebar-item">
+          <a href="{{ env('APP_LINK') }}/guilds" class="sidebar-link ">
+            <i class="fas fa-swords sidebar-icon text-xl"></i>
+            Guilds
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="{{ env('APP_LINK') }}/economy" class="sidebar-link ">
+            <i class="fas fa-chart-mixed sidebar-icon text-xl"></i>
+            Economy
+          </a>
+        </li>
+                <main class="divider">Friends</main>
+                      <li class="sidebar-item">
+              <a href="#" class="sidebar-link d-flex align-items-center gap-3" style="padding:6px 9px;">
+                <div class="position-relative">
+                  <img src="/" class="rounded-circle headshot" style="height:22px;width:22px;">
+                  <span class="position-absolute status-indicator rounded-circle  bg-muted " style="width:16px;height:16px;"></span>
+                </div>
+                <span class="truncate text-sm">Place Holder</span>
+              </a>
+            </li>
+                    <main class="divider">Guilds</main>
+                          <li class="sidebar-item">
+                <a href="{{ env('APP_LINK') }}/#" class="sidebar-link d-flex text-sm align-items-center gap-3" style="padding:9px 9px;">
+                  <div class="position-relative">
+                    <div style="background-image:url();background-size:cover;width:22px;height:22px" class="rounded-circle headshot"></div>
+                  </div>
+                  <span class="truncate text-sm">
+                    Place Holder
+                                          <i class="far fa-circle-check" style="font-size:12px" title="This guild is verified."></i>
+                                      </span>
+                </a>
+              </li>
+                          </ul>
+@endguest
     </nav>
 <body>
 @endif
-    @endguest
         @yield('content')
     </div>
 
