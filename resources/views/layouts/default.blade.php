@@ -926,7 +926,7 @@
                 class="text-light text-decoration-none fw-semibold">Contact Us</a>
         </div>
         <div class="text-muted text-sm">
-            © 2023 <span class="fw-semibold">{{ env('APP_NAME') }}, Inc.</span> All
+            © {{ date('Y') }} <span class="fw-semibold">{{ env('APP_NAME') }}, Inc.</span> All
             rights reserved.
         </div>
 </nav>
