@@ -886,11 +886,11 @@
     <main class="container">
         <img src="/assets/images/bp-primary1.png" class="d-inline-block mb-3" width="256">
         <div class="d-flex justify-content-center gap-4 text-2xl mb-4">
-            <a target="_blank" href="{{ env('DISCORD') }}" class="text-light"><i class="fab fa-discord"></i></a>
-            <a target="_blank" href="{{ env('YOUTUBE') }}" class="text-light"><i class="fab fa-youtube"></i></a>
-            <a target="_blank" href="{{ env('TWITTER') }}" class="text-light"><i class="fab fa-twitter"></i></a>
-            <a target="_blank" href="{{ env('TIKTOK') }}" class="text-light"><i class="fab fa-tiktok"></i></a>
-            <a target="_blank" href="{{ env('TWITCH') }}" class="text-light"><i class="fab fa-twitch"></i></a>
+            <a target="_blank" href="https://discord.gg/{{ env('DISCORD') }}" class="text-light"><i class="fab fa-discord"></i></a>
+            <a target="_blank" href="https://youtube.com/@{{ env('YOUTUBE') }}" class="text-light"><i class="fab fa-youtube"></i></a>
+            <a target="_blank" href="https://twitter.com/{{ env('TWITTER') }}" class="text-light"><i class="fab fa-twitter"></i></a>
+            <a target="_blank" href="https://tiktok.com/@{{ env('TIKTOK') }}" class="text-light"><i class="fab fa-tiktok"></i></a>
+            <a target="_blank" href="https://twitter.com/{{ env('TWITCH') }}" class="text-light"><i class="fab fa-twitch"></i></a>
             <a target="_blank" href="{{ env('INSTAGRAM') }}" class="text-light"><i
                     class="fab fa-instagram"></i></a>
         </div>
