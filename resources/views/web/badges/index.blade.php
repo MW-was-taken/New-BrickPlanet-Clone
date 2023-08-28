@@ -22,11 +22,6 @@
                                 <div class="text-2xl fw-semibold mb-2">
                                     Admin
                                     <div class="text-xs text-muted fw-normal">
-                                        @php
-                                            $adminBadgeCount = DB::table('user_badges')
-                                                ->where('badge_id', 1)
-                                                ->count();
-                                        @endphp
                                         {{ $adminBadgeCount }} users possess this achievement<span
                                             class="text-muted mx-2 text-xs align-middle">
                                         </span></div>
