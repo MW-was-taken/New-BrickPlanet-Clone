@@ -35,10 +35,10 @@ Done!
 
 ## Credits
 
-FoxxoSnoot: Original LRC code, which makes this possible.
-Saumodunn: Helping with a few bits here and there.
-BrickPlanet: Their frontend (Obviously).
-Eifo: Helped me optomise my code when I asked, or helped me with the best way to do things.
+FoxxoSnoot: Original LRC code, which makes this possible.  
+Saumodunn: Helping with a few bits here and there.  
+BrickPlanet: Their frontend (Obviously).  
+Eifo: Helped me optimize my code when I asked, or helped me with the best way to do things.  
 Me: Made the reskin as well as a few backend changes here and there, and added things.
 
 ## License
