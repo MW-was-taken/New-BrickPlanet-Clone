@@ -347,6 +347,13 @@
                 <li class="sidebar-item">
                     <a href="{{ env('APP_LINK') }}/trades" class="sidebar-link ">
                         <i class="far fa-handshake sidebar-icon text-xl position-relative">
+                            php
+                            $tradeCount = Auth::user()->tradeCount();
+                            @endphp
+                            @if ($friendRequestCount > 0)
+                                <span class="notification-count"
+                                    style="font-size:8px;right:0px;">{{ number_format($tradeCount) }}</span>
+                            @endif
                         </i>
                         My Trades
                     </a>
